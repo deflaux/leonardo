@@ -22,5 +22,10 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
+    - name: Run scalafmt
+      run: SBT_OPTS=-J-Xmx3g sbt -Denv.type=test clean "test:compile" scalafmtCheckAll
+       
     - name: Run tests
-      run: sbt version
+      run: |
+          SBT_OPTS=-J-Xmx3g sbt -Denv.type=test -Dmysql.host=localhost -Dmysql.port=3307 "project http" coverage test coverageReport
+          SBT_OPTS=-J-Xmx3g sbt -Denv.type=test "project core" coverage test coverageReport
