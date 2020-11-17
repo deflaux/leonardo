@@ -1,3 +1,4 @@
+# This will automatically use the sbt version in project/build.properties
 name: Unit tests
 
 on:
@@ -13,31 +14,31 @@ jobs:
     steps:
     - name: git checkout
     - uses: actions/checkout@v2
-    
+
     - name: Set up mysql docker container
       run: |
-         docker rm -f mysql || true 
+         docker rm -f mysql || true
          docker pull mysql/mysql-server:5.6
          docker run -p 3307:3306 --name mysql -e MYSQL_ROOT_PASSWORD=leonardo-test -e MYSQL_USER=leonardo-test -e MYSQL_PASSWORD=leonardo-test -e MYSQL_DATABASE=leotestdb -d mysql/mysql-server:5.6
-    
+
     - name: Set up JDK 1.8
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
     - name: Compile and check scalafmt
-      env: 
+      env:
         JAVA_OPTS: -Xmx3G
         JVM_OPTS:  -Xmx3G
       run: sbt -Denv.type=test clean "test:compile" scalafmtCheckAll
-       
+
     - name: Run tests
-      env: 
+      env:
         JAVA_OPTS: -Xmx3G
         JVM_OPTS:  -Xmx3G
       run: |
           sbt -Denv.type=test -Dmysql.host=localhost -Dmysql.port=3307 "project http" coverage test coverageReport
           sbt -Denv.type=test "project core" coverage test coverageReport
-          
+
     - name: Setup Cache
       uses: coursier/cache-action@v5
     - name: Cache resources
