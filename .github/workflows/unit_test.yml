@@ -12,9 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: git checkout
     - uses: actions/checkout@v2
-
     - name: Set up mysql docker container
       run: |
          docker rm -f mysql || true
