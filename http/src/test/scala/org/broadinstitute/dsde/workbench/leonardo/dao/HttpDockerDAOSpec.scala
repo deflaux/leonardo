@@ -20,9 +20,9 @@ class HttpDockerDAOSpec extends AnyFlatSpec with Matchers with BeforeAndAfterAll
     ContainerImage("broadinstitute/terra-jupyter-aou:1.0.17", DockerHub),
     // dockerhub with sha
     // TODO: shas are currently not working
-    //    DockerHub(
-    //      "broadinstitute/leonardo-notebooks@sha256:bb959cf74f31d2a10f7bb8ee0f0754138d7c90f7ed8a92c3697ac994ff8b40b7"
-    //    ),
+//    DockerHub(
+//      "broadinstitute/leonardo-notebooks@sha256:bb959cf74f31d2a10f7bb8ee0f0754138d7c90f7ed8a92c3697ac994ff8b40b7"
+//    ),
     // gcr with tag
     ContainerImage("us.gcr.io/broad-dsp-gcr-public/leonardo-jupyter:dev", GCR),
     ContainerImage("us.gcr.io/broad-dsp-gcr-public/terra-jupyter-python:0.0.4", GCR),
@@ -30,9 +30,9 @@ class HttpDockerDAOSpec extends AnyFlatSpec with Matchers with BeforeAndAfterAll
     ContainerImage("us.gcr.io/broad-dsp-gcr-public/terra-jupyter-gatk:0.0.4", GCR)
     // gcr with sha
     // TODO shas are currently not working
-    //    GCR(
-    //      "us.gcr.io/broad-dsp-gcr-public/leonardo-jupyter@sha256:fa11b7c528304726985b4ad4cb4cb4d8b9a2fbf7c5547671ef495f414564727c"
-    //    )
+//    GCR(
+//      "us.gcr.io/broad-dsp-gcr-public/leonardo-jupyter@sha256:fa11b7c528304726985b4ad4cb4cb4d8b9a2fbf7c5547671ef495f414564727c"
+//    )
   )
 
   val rstudioImages = List(
@@ -42,16 +42,16 @@ class HttpDockerDAOSpec extends AnyFlatSpec with Matchers with BeforeAndAfterAll
     ContainerImage("rtitle/anvil-rstudio-base:0.0.1", DockerHub),
     // dockerhub with sha
     // TODO: shas are currently not working
-    //    DockerHub(
-    //      "rocker/rstudio@sha256:5aea617714eb38a97a21de652ab667c6d7bb486d7468a4ab6b4d515154fec383"
-    //    ),
+//    DockerHub(
+//      "rocker/rstudio@sha256:5aea617714eb38a97a21de652ab667c6d7bb486d7468a4ab6b4d515154fec383"
+//    ),
     // gcr with tag
     ContainerImage("us.gcr.io/anvil-gcr-public/anvil-rstudio-base:0.0.1", GCR)
     // gcr with sha
     // TODO shas are currently not working
-    //    GCR(
-    //      "us.gcr.io/anvil-gcr-public/anvil-rstudio-base@sha256:98ed9ed3072ab20633f5212ddc7201c0df369db28fd669a509987e0744bcef2c"
-    //    )
+//    GCR(
+//      "us.gcr.io/anvil-gcr-public/anvil-rstudio-base@sha256:98ed9ed3072ab20633f5212ddc7201c0df369db28fd669a509987e0744bcef2c"
+//    )
   )
 
   def withDockerDAO(testCode: HttpDockerDAO[IO] => Any): Unit = {
