@@ -13,7 +13,8 @@ comment:
   layout: "reach,diff,flags,files,footer"
   behavior: default
   require_changes: no
-
+  require_head: no     # default yes
+  require_base: no     # default yes
 coverage:
   status:
     project:
