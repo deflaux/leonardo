@@ -38,10 +38,11 @@ jobs:
          sbt -Denv.type=test "project core" coverage test coverageReport
 #          sbt -Denv.type=test -Dmysql.host=localhost -Dmysql.port=3307 "project http" coverage test coverageReport
 
-    - name: Coveralls
-      uses: coverallsapp/github-action@master
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1
       with:
-        github-token: ${{ secrets.COVERALLS_TOKEN }}
+        fail_ci_if_error: true
+        token: ${{ secrets.CODECOV_TOKEN }}
 
     - name: Setup Cache
       uses: coursier/cache-action@v5
