@@ -1,7 +1,6 @@
 codecov:
   require_ci_to_pass: yes
   branch: jcanas-unit-test-github-action
-  bot: jdcanas
 
 parsers:
   gcov:
