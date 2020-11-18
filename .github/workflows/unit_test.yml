@@ -34,8 +34,14 @@ jobs:
         JAVA_OPTS: -Xmx3G
         JVM_OPTS:  -Xmx3G
       run: |
-          sbt -Denv.type=test -Dmysql.host=localhost -Dmysql.port=3307 "project http" coverage test coverageReport
           sbt -Denv.type=test "project core" coverage test coverageReport
+          sbt -Denv.type=test -Dmysql.host=localhost -Dmysql.port=3307 "project http" coverage test coverageReport
+
+
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1
+      with:
+       fail_ci_if_error: true
 
     - name: Setup Cache
       uses: coursier/cache-action@v5
